@@ -18,7 +18,7 @@ const NewsStoryComments = ({ storyId }) => {
             }
         };
 
-        fetchData('http://localhost:5160/api/HackerNews/', storyId);
+        fetchData('https://appsvc-hackernewsservice.azurewebsites.net/api/HackerNews/', storyId);
     }, [storyId]); // The empty dependency array ensures the effect runs once on component mount
 
     function formattedDateTime( unixtime )

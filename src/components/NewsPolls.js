@@ -42,7 +42,7 @@ const NewsStories = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5160/api/HackerNews/polls');
+                const response = await fetch('https://appsvc-hackernewsservice.azurewebsites.net/api/HackerNews/polls');
                 const result = await response.json();
                 setData(result);
             } catch (error) {

@@ -5,7 +5,7 @@ import { Grid, Button, Link } from '@mui/material'
 import NewsStoryComments from './NewsStoryComments';
 
 
-const NewsStories = () => {
+const NewsJobs = () => {
 
     const useStyles = styled((theme) => ({
         story: {
@@ -42,7 +42,7 @@ const NewsStories = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5160/api/HackerNews/jobs');
+                const response = await fetch('https://appsvc-hackernewsservice.azurewebsites.net/api/HackerNews/jobs');
                 const result = await response.json();
                 setData(result);
             } catch (error) {
@@ -88,4 +88,4 @@ const NewsStories = () => {
  
 };
 
-export default NewsStories;
+export default NewsJobs;

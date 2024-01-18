@@ -10,6 +10,12 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 const App = () => {
     const [value, setValue] = useState(0);
+    const env = process.env.ENV || 'development';
+/*    const config = require('./config')[env];*/
+
+    // Now config.externalServiceDomain contains the appropriate value based on the environment
+/*    console.log('External Service Domain:', config.externalServiceDomain);*/
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

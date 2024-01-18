@@ -42,7 +42,7 @@ const NewsStories = (type) => {
     useEffect(() => {
         const fetchData = async (type) => {
             try {
-                const url = 'http://localhost:5160/api/HackerNews/' + type.type;
+                const url = 'https://appsvc-hackernewsservice.azurewebsites.net/api/HackerNews/' + type.type;
                 const response = await fetch(url);
                 const result = await response.json();
                 setData(result);

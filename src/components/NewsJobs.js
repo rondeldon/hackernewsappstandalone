@@ -3,7 +3,6 @@ import { Typography, Paper } from '@mui/material';
 import { Grid, Button, Link } from '@mui/material'
 import NewsStoryComments from './NewsStoryComments';
 
-
 const NewsJobs = () => {
     const [stories, setData] = useState(null);
     const [getstoryIdComments, setStoryComment] = useState(null);

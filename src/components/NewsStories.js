@@ -4,13 +4,14 @@ import { Grid, Button, Link } from '@mui/material'
 import NewsStoryComments from './NewsStoryComments';
 
 
-const NewsStories = (type) => {
+const NewsStories = ({ type }) => {
     const [stories, setData] = useState(null);
+    const newsType = type
     const [getstoryIdComments, setStoryComment] = useState(null);
     useEffect(() => {
-        const fetchData = async (type) => {
+        const fetchData = async () => {
             try {
-                const url = 'https://appsvc-hackernewsservice.azurewebsites.net/api/HackerNews/' + type.type;
+                const url = 'https://appsvc-hackernewsservice.azurewebsites.net/api/HackerNews/' + newsType;
                 const response = await fetch(url);
                 const result = await response.json();
                 setData(result);
@@ -18,8 +19,8 @@ const NewsStories = (type) => {
                 console.error('Error fetching data:', error);
             }
         };
-        fetchData(type);
-    }, [type]); // The empty dependency array ensures the effect runs once on component mount
+        fetchData(newsType);
+    }, [newsType]); // The empty dependency array ensures the effect runs once on component mount
 
     function formattedDateTime(unixtime) {
         var date = new Date(unixtime * 1000);

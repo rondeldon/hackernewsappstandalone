@@ -1,7 +1,5 @@
 import './App.css';
 import NewsStories from './components/NewsStories';
-import NewsPolls from './components/NewsPolls';
-import NewsJobs from './components/NewsJobs';
 import { AppBar, Tabs, Tab } from '@mui/material';
 import Header from './components/Header';
 import React, { useState }  from 'react';
@@ -12,7 +10,6 @@ const App = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
     return (
         <div>
             <Router>
@@ -23,19 +20,18 @@ const App = () => {
                         <Tab label="Top" component={Link} to="/top" sx={{ '&.Mui-selected': { color: '#4caf50' }, }} />
                         <Tab label="Best" component={Link} to="/best" sx={{ '&.Mui-selected': { color: '#4caf50' }, }} />
                         <Tab label="Jobs" component={Link} to="/jobs" sx={{ '&.Mui-selected': { color: '#4caf50' }, }} />
-{/*                        <Tab label="Polls" component={Link} to="/polls" sx={{ '&.Mui-selected': { color: '#4caf50' }, }} />/>*/}
                         <Tab label="Shows" component={Link} to="/shows" sx={{ '&.Mui-selected': { color: '#4caf50' }, }} />
                         <Tab label="Asks" component={Link} to="/asks" sx={{ '&.Mui-selected': { color: '#4caf50' }, }} />
                     </Tabs> 
                 </AppBar>
                 <Routes>
+                    <Route path="/" element={<NewsStories type="newstories" />} />
                     <Route path="/new" element={<NewsStories type="newstories" />} />
                     <Route path="/top" element={<NewsStories type="topstories" />} />
                     <Route path="/best" element={<NewsStories type="beststories" />} />
                     <Route path="/shows" element={<NewsStories type="shows" />} />
                     <Route path="/asks" element={<NewsStories type="asks" />} />
-                    <Route path="/jobs" element={<NewsJobs />} />
-                    <Route path="/polls" element={<NewsPolls />} />
+                    <Route path="/jobs" element={<NewsStories type="jobs" />} />
                  </Routes>
             </Router>
             </div>

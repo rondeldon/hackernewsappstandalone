@@ -39,7 +39,8 @@ const NewsStoryComments = ({ storyId }) => {
                                    <Typography variant="caption" style={{ marginLeft: '8px' }} component="p" dangerouslySetInnerHTML={{ __html: comment.text }}></Typography>
                                </div>
                                    <Typography variant="caption" component="p">By: {comment.by}</Typography>
-                                   <Typography variant="caption" component="p" color="textSecondary">Date: {formattedDateTime(comment.time)}</Typography>
+                               <Typography variant="caption" component="p" color="textSecondary">Date: {formattedDateTime(comment.time)}</Typography>
+                               { comment.kids && comment.kids.length > 0 && <NewsStoryComments storyId={comment.id} ></NewsStoryComments>}  
                             </Paper>
                         </ListItem>
 

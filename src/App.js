@@ -1,7 +1,6 @@
 import './App.css';
 import NewsStories from './components/NewsStories';
-import NewsPolls from './components/NewsPolls';
-import NewsJobs from './components/NewsJobs';
+/*import NewsJobs from './components/NewsJobs';*/
 import { AppBar, Tabs, Tab } from '@mui/material';
 import { styled } from '@mui/system';
 import Header from './components/Header';
@@ -84,8 +83,8 @@ const App = () => {
                             <Route path="/best" element={<NewsStories type="beststories" />} />
                             <Route path="/shows" element={<NewsStories type="shows" />} />
                             <Route path="/asks" element={<NewsStories type="asks" />} />
-                            <Route path="/jobs" element={<NewsJobs />} />
-                            <Route path="/polls" element={<NewsPolls />} />
+                            <Route path="/jobs" element={<NewsStories type="jobs" />} />
+                            {/*                         <Route path="/polls" element={<NewsPolls />} /> */}
                          </Routes>
                     </Router>
                 </div>

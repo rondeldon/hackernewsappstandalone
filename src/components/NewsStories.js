@@ -1,57 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { styled } from '@mui/system';
 import { Typography, Paper } from '@mui/material';
 import { Grid, Button, Link } from '@mui/material'
+import { useMsal } from "@azure/msal-react";
 import NewsStoryComments from './NewsStoryComments';
+import { loginRequest } from "./AuthConfig";
 
 
-const NewsStories = (type) => {
-
-    const useStyles = styled((theme) => ({
-        story: {
-            position: 'relative',
-            height: '400px', // Adjust the height as needed
-            color: theme.palette.common.white,
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundImage: 'url("path/to/your-background-image.jpg")', // Add your image URL here
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-        },
-        overlay: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.6)', // Adjust the overlay color and opacity
-        },
-        storyContent: {
-            zIndex: 1,
-        },
-        button: {
-            marginTop: theme.spacing(4),
-        },
-    }));
-
+const NewsStories = ({ type }) => {
+    const { instance, accounts } = useMsal();
     const [stories, setData] = useState(null);
+    const newsType = type
     const [getstoryIdComments, setStoryComment] = useState(null);
     useEffect(() => {
-        const fetchData = async (type) => {
+        const fetchData = async () => {
             try {
-                const url = 'https://appsvc-hackernewsservice.azurewebsites.net/api/HackerNews/' + type.type;
-                const response = await fetch(url);
+                const token = await instance.acquireTokenSilent({
+                    ...loginRequest,
+                    account: accounts[0]
+                });
+
+                const url = 'https://appsvc-hackernewsservice.azurewebsites.net/api/HackerNews/' + newsType;
+                const response = await fetch(url, {
+                    headers: {
+                        'Authorization': `Bearer ${token.accessToken}`
+                    }
+                }) ;
                 const result = await response.json();
                 setData(result);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
-        fetchData(type);
-    }, [type]); // The empty dependency array ensures the effect runs once on component mount
+        fetchData(newsType);
+    }, [newsType, instance, accounts]); 
 
     function formattedDateTime(unixtime) {
         var date = new Date(unixtime * 1000);

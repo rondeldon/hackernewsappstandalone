@@ -9,25 +9,25 @@ const Header = () => {
 
     const getPageTitle = () => {
         if (location.pathname === '/new' || location.pathname === '/') {
-            return 'Hacker News!';
+            return 'Hacker News! ... The Newest Stories';
         }
         else if (location.pathname === '/top') {
-            return 'Hacker News!';
+            return 'Hacker News! ... The Top Stories';
         }
         else if (location.pathname === '/best') {
-            return 'Hacker News!';
+            return 'Hacker News! ... The Best Stories';
         }
         else if (location.pathname === '/shows') {
-            return 'Hacker News!';
+            return 'Hacker News! ... The Shows';
         }
         else if (location.pathname === '/asks') {
-            return 'Hacker News!';
+            return 'Hacker News! ... The Asks';
         }
         else if (location.pathname === '/polls') {
-            return 'Hacker News!';
+            return 'Hacker News! ... The Polls';
         }
         else if (location.pathname === '/jobs') {
-            return 'Hacker News!';
+            return 'Hacker News! ... The Jobs';
         }
         else {
             return 'Hacker News!';

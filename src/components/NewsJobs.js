@@ -3,7 +3,8 @@ import { styled } from '@mui/system';
 import { Typography, Paper } from '@mui/material';
 import { Grid, Button, Link } from '@mui/material'
 import NewsStoryComments from './NewsStoryComments';
-
+import { useMsal } from "@azure/msal-react";
+import { loginRequest } from "./AuthConfig";
 
 const NewsJobs = () => {
 
@@ -37,12 +38,23 @@ const NewsJobs = () => {
         },
     }));
 
+    const { instance, accounts } = useMsal();
     const [stories, setData] = useState(null);
     const [getstoryIdComments, setStoryComment] = useState(null);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://appsvc-hackernewsservice.azurewebsites.net/api/HackerNews/jobs');
+                const token = await instance.acquireTokenSilent({
+                    ...loginRequest,
+                    account: accounts[0]
+                });
+
+                const response = await fetch('https://appsvc-hackernewsservice.azurewebsites.net/api/HackerNews/jobs', {
+                    headers: {
+                        'Authorization': `Bearer ${token.accessToken}`
+                    }
+                });
+
                 const result = await response.json();
                 setData(result);
             } catch (error) {

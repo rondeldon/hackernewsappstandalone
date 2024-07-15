@@ -2,7 +2,6 @@ import './App.css';
 import NewsStories from './components/NewsStories';
 /*import NewsJobs from './components/NewsJobs';*/
 import { AppBar, Tabs, Tab } from '@mui/material';
-import { styled } from '@mui/system';
 import Header from './components/Header';
 import React, { useState, useEffect }  from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
@@ -13,7 +12,6 @@ import { MsalProvider } from "@azure/msal-react";
 
 const App = () => {
     const [value, setValue] = useState(0);
-    const env = process.env.ENV || 'development';
 
     const [msalInstance, setMsalInstance] = useState(null);
     useEffect(() => {

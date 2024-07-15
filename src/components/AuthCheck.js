@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useMsal } from "@azure/msal-react";
-import { InteractionRequiredAuthError } from "@azure/msal-browser";
-import { loginRequest } from "./AuthConfig";
+import React, { useEffect, useState } from 'react';
+import { useMsal } from '@azure/msal-react';
+import { InteractionRequiredAuthError } from '@azure/msal-browser';
+import { loginRequest } from './AuthConfig';
 
 export const AuthCheck = ({ children }) => {
     const { instance, accounts, inProgress } = useMsal();

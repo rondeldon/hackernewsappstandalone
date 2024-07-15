@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Paper } from '@mui/material';
 import { Grid, Button, Link } from '@mui/material'
-import { useMsal } from "@azure/msal-react";
+import { useMsal } from '@azure/msal-react';
 import NewsStoryComments from './NewsStoryComments';
-import { loginRequest } from "./AuthConfig";
+import { loginRequest } from './AuthConfig';
 
 
 const NewsStories = ({ type }) => {

@@ -5,10 +5,10 @@ import { AppBar, Tabs, Tab } from '@mui/material';
 import Header from './components/Header';
 import React, { useState, useEffect }  from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { PublicClientApplication } from "@azure/msal-browser";
-import { msalConfig } from "./components/AuthConfig"
-import { AuthCheck } from "./components/AuthCheck"
-import { MsalProvider } from "@azure/msal-react";
+import { PublicClientApplication } from '@azure/msal-browser';
+import { msalConfig } from './components/AuthConfig'
+import { AuthCheck } from './components/AuthCheck'
+import { MsalProvider } from '@azure/msal-react';
 
 const App = () => {
     const [value, setValue] = useState(0);

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@azure/msal-browser": "^3.19.0",
     "@azure/msal-react": "^2.0.20",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
@@ -41,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "eslint-config-react-app": "^7.0.1",
     "jest-editor-support": "^31.1.2"
   }

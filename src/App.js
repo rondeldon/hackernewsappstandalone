@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from "./components/AuthConfig"
 import { AuthCheck } from "./components/AuthCheck"
-import { MsalProvider, useMsal, useIsAuthenticated } from "@azure/msal-react";
+import { MsalProvider } from "@azure/msal-react";
 
 const App = () => {
     const [value, setValue] = useState(0);
@@ -30,35 +30,6 @@ const App = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    const useStyles = styled((theme) => ({
-        story: {
-            position: 'relative',
-            height: '400px', // Adjust the height as needed
-            color: theme.palette.common.white,
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundImage: 'url("path/to/your-background-image.jpg")', // Add your image URL here
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-        },
-        overlay: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.6)', // Adjust the overlay color and opacity
-        },
-        storyContent: {
-            zIndex: 1,
-        },
-        button: {
-            marginTop: theme.spacing(4),
-        },
-    }));
 
     return (
         <MsalProvider instance={msalInstance}>
